@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/gofiber/fiber/v2 v2.38.1
-	github.com/golang/mock v1.4.4
 	github.com/spf13/viper v1.13.0
 	github.com/stretchr/testify v1.8.0
 )

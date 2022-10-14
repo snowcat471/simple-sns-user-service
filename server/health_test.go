@@ -4,14 +4,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 )
 
 func TestHealth(t *testing.T) {
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
-
 	server := NewServer(0)
 	req, err := http.NewRequest(http.MethodGet, "/health", nil)
 	require.NoError(t, err)

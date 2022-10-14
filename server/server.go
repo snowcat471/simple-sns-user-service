@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -23,7 +24,10 @@ func NewServer(port int) *Server {
 }
 
 func (s *Server) Run() {
-	s.app.Listen(fmt.Sprintf(":%d", s.port))
+	err := s.app.Listen(fmt.Sprintf(":%d", s.port))
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
 
 func (s *Server) addRoutes() {
