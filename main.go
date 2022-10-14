@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	server := server.NewFiberServer(config.ServerPort())
+	server := server.NewServer(config.ServerPort())
 	server.Run()
 }
