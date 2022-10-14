@@ -1,8 +1,11 @@
 package main
 
-import "github.com/snowcat471/simple-sns-user-service/server"
+import (
+	"github.com/snowcat471/simple-sns-user-service/config"
+	"github.com/snowcat471/simple-sns-user-service/server"
+)
 
 func main() {
-	server := server.NewFiberServer(3000)
+	server := server.NewFiberServer(config.ServerPort())
 	server.Run()
 }
