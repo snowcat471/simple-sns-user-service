@@ -14,7 +14,9 @@ type Server struct {
 }
 
 func NewServer(port int) *Server {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		ErrorHandler: errorHandelr,
+	})
 	app.Use(logger.New())
 
 	server := &Server{app, port}
