@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/gofiber/fiber/v2 v2.38.1
+	github.com/oklog/ulid v1.3.1
 	github.com/spf13/viper v1.13.0
 	github.com/stretchr/testify v1.8.0
 )

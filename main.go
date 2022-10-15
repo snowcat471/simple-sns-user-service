@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	server := server.NewServer(config.ServerPort())
-	server.Run()
+	s := server.NewServer(config.ServerPort())
+	s.Run()
 }
