@@ -5,29 +5,29 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 type Server struct {
-	app  *fiber.App
-	port int
+	app *fiber.App
 }
 
-func NewServer(port int) *Server {
+func NewServer() *Server {
 	app := fiber.New(fiber.Config{
 		ErrorHandler: errorHandler,
 	})
+	app.Use(cors.New())
 	app.Use(logger.New())
 
-	server := &Server{app, port}
+	server := &Server{app}
 	server.addRoutes()
 
 	return server
 }
 
-func (s *Server) Run() {
-	err := s.app.Listen(fmt.Sprintf(":%d", s.port))
-	if err != nil {
+func (s *Server) Run(port int) {
+	if err := s.app.Listen(fmt.Sprintf(":%d", port)); err != nil {
 		log.Fatalln(err)
 	}
 }

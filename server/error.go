@@ -5,7 +5,6 @@ import (
 )
 
 func errorHandler(c *fiber.Ctx, err error) error {
-
 	code := fiber.StatusInternalServerError
 	message := "Internal Server Error"
 
@@ -14,7 +13,5 @@ func errorHandler(c *fiber.Ctx, err error) error {
 		message = e.Message
 	}
 
-	res := NewErrorResponse(code, message)
-
-	return c.Status(code).JSON(res)
+	return c.Status(code).JSON(NewErrorResponse(code, message))
 }

@@ -8,7 +8,7 @@ import (
 )
 
 func TestHealth(t *testing.T) {
-	server := NewServer(0)
+	server := NewServer()
 	req, err := http.NewRequest(http.MethodGet, "/health", nil)
 	require.NoError(t, err)
 

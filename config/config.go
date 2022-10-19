@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/spf13/viper"
@@ -9,18 +8,14 @@ import (
 
 var config AppConfig
 
-type ServerConfig struct {
-	Port int `yaml:"port"`
-}
-
 type AppConfig struct {
-	Server ServerConfig `yaml:"server"`
+	ServerPort int `mapstructure:"SERVER_PORT"`
 }
 
 func init() {
 	viper.AddConfigPath(".")
-	viper.SetConfigName("config.yaml")
-	viper.SetConfigType("yaml")
+	viper.SetConfigFile(".env")
+	viper.SetConfigType("env")
 
 	viper.AutomaticEnv()
 
@@ -33,10 +28,8 @@ func init() {
 	if err != nil {
 		log.Fatalln("Error when unmashaling config: ", err)
 	}
-
-	fmt.Printf("%x", config)
 }
 
 func ServerPort() int {
-	return config.Server.Port
+	return config.ServerPort
 }
